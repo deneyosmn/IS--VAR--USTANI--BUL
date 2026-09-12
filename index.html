@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>İş Var – Ustanı Bul | Hizmet Pazaryeri Platformu</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+  <!-- ÜST BİLDİRİM VE PAYLAŞILABİLİR LİNK BARI -->
+  <div class="bg-emerald-900 text-emerald-100 text-xs py-2 px-4 flex justify-between items-center">
+    <div class="flex items-center space-x-2 overflow-hidden">
+      <span class="bg-emerald-600 text-white font-bold px-2 py-0.5 rounded text-[10px]">CANLI YAYINDA</span>
+      <span class="truncate font-mono">Yayın Adresi: <strong class="text-emerald-300">https://isvarustanibul.com</strong></span>
+    </div>
+    <div class="flex items-center space-x-4 shrink-0">
+      <button onclick="sharePlatform()" class="hover:text-white flex items-center space-x-1 font-semibold text-emerald-200">
+        <i class="fa-solid fa-share-nodes"></i> <span>Siteyi Paylaş</span>
+      </button>
+      <a href="#admin" class="bg-emerald-700 hover:bg-emerald-600 text-white px-2 py-1 rounded flex items-center space-x-1 text-xs transition">
+        <i class="fa-solid fa-user-shield"></i> <span>Admin Paneli</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ANA NAVİGASYON -->
+  <header class="bg-white shadow-sm border-b sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <!-- Logo -->
+        <a href="#anasayfa" class="flex items-center space-x-3 text-emerald-600 hover:opacity-90">
+          <div class="w-12 h-12 bg-emerald-600 text-white rounded-2xl flex items-center justify-center font-black text-2xl shadow-lg shadow-emerald-200">
+            İV
+          </div>
+          <div>
+            <span class="text-2xl font-extrabold tracking-tight text-slate-900 block leading-none">İş Var</span>
+            <span class="text-xs font-bold text-emerald-600 tracking-wider uppercase">Ustanı Bul</span>
+          </div>
+        </a>
+
+        <!-- Kategori Linkleri (Masaüstü) -->
+        <nav class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-slate-700">
+          <a href="#kategori/temizlik" class="hover:text-emerald-600 transition flex items-center space-x-1"><i class="fa-solid fa-broom text-emerald-500"></i> <span>Temizlik</span></a>
+          <a href="#kategori/tadilat" class="hover:text-emerald-600 transition flex items-center space-x-1"><i class="fa-solid fa-hammer text-emerald-500"></i> <span>Tadilat</span></a>
+          <a href="#kategori/nakliyat" class="hover:text-emerald-600 transition flex items-center space-x-1"><i class="fa-solid fa-truck-ramps text-emerald-500"></i> <span>Nakliyat</span></a>
+          <a href="#kategori/tamir" class="hover:text-emerald-600 transition flex items-center space-x-1"><i class="fa-solid fa-wrench text-emerald-500"></i> <span>Tamir</span></a>
+          <a href="#kategori/ozel-ders" class="hover:text-emerald-600 transition flex items-center space-x-1"><i class="fa-solid fa-graduation-cap text-emerald-500"></i> <span>Özel Ders</span></a>
+          <a href="#kategori/organizasyon" class="hover:text-emerald-600 transition flex items-center space-x-1"><i class="fa-solid fa-cake-candles text-emerald-500"></i> <span>Organizasyon</span></a>
+          <a href="#yardim" class="hover:text-emerald-600 transition flex items-center space-x-1 text-slate-500"><i class="fa-solid fa-circle-question"></i> <span>Yardım</span></a>
+        </nav>
+
+        <!-- Sağ Eylemler -->
+        <div class="flex items-center space-x-3">
+          <a href="#hizmet-ver" class="hidden sm:inline-flex items-center justify-center bg-slate-900 hover:bg-slate-800 text-white px-4 py-2.5 rounded-xl font-bold text-sm transition shadow-sm">
+            <i class="fa-solid fa-briefcase mr-2 text-emerald-400"></i> Hizmet Ver
+          </a>
+          <button id="user-auth-btn" onclick="openAuthModal()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2.5 rounded-xl font-bold text-sm transition flex items-center space-x-2 shadow-md shadow-emerald-200">
+            <i class="fa-solid fa-user"></i> <span id="auth-btn-text">Giriş Yap</span>
+          </button>
+          <a href="#panel" id="user-panel-link" class="hidden bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-2.5 rounded-xl font-bold text-sm transition">
+            <i class="fa-solid fa-id-card text-emerald-600"></i> <span>Panelim</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- DİNAMİK İÇERİK ALANI -->
+  <main id="app-content" class="flex-grow">
+    <!-- JS ile Rota İçeriği Yüklenecek -->
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-300 pt-12 pb-8 border-t border-slate-800 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-slate-800">
+        <div>
+          <div class="flex items-center space-x-2 text-white font-extrabold text-xl mb-4">
+            <div class="w-8 h-8 bg-emerald-500 text-white rounded-lg flex items-center justify-center font-bold text-sm">İV</div>
+            <span>İş Var – Ustanı Bul</span>
+          </div>
+          <p class="text-sm text-slate-400 leading-relaxed mb-4">
+            İhtiyacın olan hizmete kolayca ulaş, usta tekliflerini karşılaştır ve bekleyen işlerini İş Var garantisiyle hallet.
+          </p>          <p class="text-xs text-emerald-400 font-mono">https://isvarustanibul.com</p>
+        </div>
+        <div>
+          <h4 class="text-white font-bold text-sm mb-4 uppercase tracking-wider">Hızlı Hizmetler</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li><a href="#kategori/temizlik" class="hover:text-emerald-400 transition">Ev Temizliği</a></li>
+            <li><a href="#kategori/tadilat" class="hover:text-emerald-400 transition">Boya Badana & Tadilat</a></li>
+            <li><a href="#kategori/nakliyat" class="hover:text-emerald-400 transition">Evden Eve Nakliyat</a></li>
+            <li><a href="#kategori/tamir" class="hover:text-emerald-400 transition">Kombi Servisi & Tamir</a></li>
+            <li><a href="#kategori/ozel-ders" class="hover:text-emerald-400 transition">Matematik & İngilizce Ders</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-bold text-sm mb-4 uppercase tracking-wider">Kurumsal & Destek</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li><a href="#yardim" class="hover:text-emerald-400 transition">Sıkça Sorulan Sorular</a></li>
+            <li><a href="#yardim" class="hover:text-emerald-400 transition">İş Var Garantisi</a></li>
+            <li><a href="#admin" class="text-emerald-400 hover:underline font-semibold flex items-center space-x-1"><i class="fa-solid fa-lock text-xs"></i> <span>Yönetim / Admin Paneli</span></a></li>
+            <li class="text-xs text-slate-500 pt-2">Geçici Admin: admin.admin / admin123</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-bold text-sm mb-4 uppercase tracking-wider">İletişim & Destek</h4>
+          <p class="text-xs text-slate-400 mb-2">Destek E-posta Adresi:</p>
+          <a href="mailto:destekisvarustanibul@outlook.com" class="text-sm text-emerald-400 font-semibold block hover:underline mb-4">destekisvarustanibul@outlook.com</a>
+          <button onclick="sharePlatform()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-2 px-4 rounded-xl text-xs font-bold transition flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-share-nodes"></i> <span>Platform Bağlantısını Paylaş</span>
+          </button>
+        </div>
+      </div>
+      <div class="pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
+        <p>&copy; 2025 İş Var - Ustanı Bul. Tüm hakları saklıdır. Otomatik olarak saklanır ve yedeklenir.</p>
+        <p class="mt-2 sm:mt-0 font-mono text-emerald-500">Alan Adı: isvarustanibul.com</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- GİRİŞ / KAYIT MODAL -->
+  <div id="auth-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl relative animate-fade-in">
+      <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-xl font-bold w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100">&times;</button>
+      <div class="text-center mb-6">
+        <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-2 text-xl font-extrabold">
+          İV
+        </div>
+        <h3 class="text-xl font-bold text-slate-900">Kullanıcı Girişi / Kayıt</h3>
+        <p class="text-xs text-slate-500 mt-1">Müşteri veya Hizmet Veren Hesabınıza Erişin</p>
+      </div>
+      <form onsubmit="handleUserAuth(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase mb-1">E-posta veya Kullanıcı Adı</label>
+          <input type="text" id="auth-username" required placeholder="ör. ahmet@gmail.com veya admin.admin" class="w-full border border-slate-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Şifre</label>
+          <input type="password" id="auth-password" required placeholder="******" class="w-full border border-slate-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+        </div>
+        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs text-slate-600">
+          <p class="font-bold text-emerald-700 mb-1"><i class="fa-solid fa-key mr-1"></i> Geçici Admin Bilgisi:</p>
+          <p>Kullanıcı Adı: <code class="bg-emerald-100 text-emerald-800 px-1 rounded font-bold">admin.admin</code></p>
+          <p>Şifre: <code class="bg-emerald-100 text-emerald-800 px-1 rounded font-bold">admin123</code></p>
+        </div>
+        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-emerald-200 transition text-sm">
+          Giriş Yap / Hesabıma Bağlan
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- PAYLAŞ MODAL -->
+  <div id="share-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl relative">
+      <button onclick="document.getElementById('share-modal').classList.add('hidden')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-xl font-bold">&times;</button>
+      <div class="text-center mb-6">
+        <div class="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-3 text-2xl">
+          <i class="fa-solid fa-share-nodes"></i>
+        </div>
+        <h3 class="text-xl font-bold text-slate-900">Platformu Paylaş</h3>
+        <p class="text-xs text-slate-500 mt-1">Aşağıdaki resmi yayın linkini paylaşarak iş ilanlarına veya ustalara kolayca ulaşabilirsiniz.</p>
+      </div>
+      <div class="bg-slate-100 p-3 rounded-2xl border flex items-center justify-between mb-4">
+        <input type="text" id="share-link-input" readonly value="https://isvarustanibul.com" class="bg-transparent text-sm font-mono text-emerald-700 font-bold w-full outline-none pr-2">
+        <button onclick="copyShareLink()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1.5 rounded-xl text-xs font-bold shrink-0 flex items-center space-x-1">
+          <i class="fa-solid fa-copy"></i> <span>Kopyala</span>
+        </button>
+      </div>
+      <div id="copy-toast" class="hidden text-center text-xs font-bold text-emerald-600 bg-emerald-50 py-2 rounded-xl border border-emerald-200">
+        <i class="fa-solid fa-circle-check mr-1"></i> Link Panoya Kopyalandı!
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
