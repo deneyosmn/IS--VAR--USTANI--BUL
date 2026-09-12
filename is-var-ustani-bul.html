@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>İş Var – Ustanı Bul | Türkiye'nin Hizmet Pazaryeri</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>/* Armut.com Rengi Ana Teması (#57b846) */
+:root {
+  --armut-primary: #57b846;
+  --armut-dark: #459a36;
+  --armut-light: #eef9ec;
+}
+
+.bg-armut {
+  background-color: var(--armut-primary);
+}
+
+.bg-armut-dark {
+  background-color: var(--armut-dark);
+}
+
+.text-armut {
+  color: var(--armut-primary);
+}
+
+.border-armut {
+  border-color: var(--armut-primary);
+}
+
+.focus\:ring-armut:focus {
+  --tw-ring-color: var(--armut-primary);
+}
+
+/* Soft animasyonlar */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Görsel Kart Hover Effect */
+.category-card {
+  transition: all 0.3s ease;
+}
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -10px rgba(87, 184, 70, 0.3);
+}</style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans flex flex-col min-h-screen">
+
+  <!-- Üst Navigasyon -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        
+        <!-- Logo -->
+        <a href="#anasayfa" class="flex items-center gap-3 group">
+          <div class="w-12 h-12 rounded-xl bg-armut text-white flex items-center justify-center font-black text-2xl shadow-md group-hover:scale-105 transition-transform">
+            İV
+          </div>
+          <div>
+            <span class="text-2xl font-black tracking-tight text-slate-900 block leading-none">İş Var</span>
+            <span class="text-xs font-semibold text-armut tracking-wider uppercase">Ustanı Bul</span>
+          </div>
+        </a>
+
+        <!-- Masaüstü Menü -->
+        <nav class="hidden xl:flex items-center space-x-1 text-sm font-medium text-slate-700">
+          <a href="#anasayfa" class="px-3 py-2 rounded-lg hover:text-armut hover:bg-slate-100 transition">Ana Sayfa</a>
+          <a href="#temizlik" class="px-3 py-2 rounded-lg hover:text-armut hover:bg-slate-100 transition">Temizlik</a>
+          <a href="#tadilat" class="px-3 py-2 rounded-lg hover:text-armut hover:bg-slate-100 transition">Tadilat</a>
+          <a href="#nakliyat" class="px-3 py-2 rounded-lg hover:text-armut hover:bg-slate-100 transition">Nakliyat</a>
+          <a href="#tamir" class="px-3 py-2 rounded-lg hover:text-armut hover:bg-slate-100 transition">Tamir</a>
+          <a href="#ozelders" class="px-3 py-2 rounded-lg hover:text-armut hover:bg-slate-100 transition">Özel Ders</a>
+          <a href="#organizasyon" class="px-3 py-2 rounded-lg hover:text-armut hover:bg-slate-100 transition">Organizasyon</a>
+          <a href="#diger" class="px-3 py-2 rounded-lg hover:text-armut hover:bg-slate-100 transition">Diğer</a>
+          <a href="#yardim" class="px-3 py-2 rounded-lg hover:text-armut hover:bg-slate-100 transition">Yardım</a>
+        </nav>
+
+        <!-- Kullanıcı Aksiyonları -->
+        <div class="hidden md:flex items-center gap-3">
+          <div id="user-balance-badge" class="hidden bg-slate-100 text-slate-800 px-3 py-1.5 rounded-full text-xs font-bold border border-slate-200 items-center gap-1.5">
+            <i class="fa-solid fa-wallet text-armut"></i> Bakiye: <span id="user-balance-val">0</span> TL
+          </div>
+          <a href="#bakiye" class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold px-3 py-2 rounded-lg transition flex items-center gap-1">
+            <i class="fa-solid fa-circle-plus text-armut"></i> Bakiye Yükle
+          </a>
+          <a href="#hizmetver" class="bg-armut text-white hover:bg-armut-dark px-4 py-2 rounded-lg font-semibold text-sm transition shadow-sm flex items-center gap-2">
+            <i class="fa-solid fa-hard-hat"></i> Hizmet Ver
+          </a>
+          <div id="auth-btn-container">
+            <a href="#giris" class="border border-slate-300 hover:bg-slate-50 text-slate-700 px-4 py-2 rounded-lg text-sm font-semibold transition">
+              Giriş / Kayıt
+            </a>
+          </div>
+          <a href="#admin" class="text-xs text-slate-400 hover:text-slate-600 p-2" title="Yönetici Paneli">
+            <i class="fa-solid fa-user-shield text-lg"></i>
+          </a>
+        </div>
+
+        <!-- Mobil Menü Butonu -->
+        <button id="mobile-menu-toggle" class="xl:hidden text-slate-600 hover:text-slate-900 focus:outline-none p-2">
+          <i class="fa-solid fa-bars text-2xl"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobil Açılır Menü -->
+    <div id="mobile-menu" class="hidden xl:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 space-y-2">
+      <a href="#anasayfa" class="block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-100">Ana Sayfa</a>
+      <a href="#temizlik" class="block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-100">Temizlik</a>
+      <a href="#tadilat" class="block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-100">Tadilat</a>
+      <a href="#nakliyat" class="block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-100">Nakliyat</a>
+      <a href="#tamir" class="block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-100">Tamir</a>
+      <a href="#ozelders" class="block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-100">Özel Ders</a>
+      <a href="#organizasyon" class="block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-100">Organizasyon</a>
+      <a href="#diger" class="block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-100">Diğer</a>
+      <a href="#yardim" class="block px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-100">Yardım</a>
+      <a href="#bakiye" class="block px-3 py-2 rounded-md font-medium text-armut hover:bg-slate-100"><i class="fa-solid fa-wallet mr-2"></i>Bakiye Yükle</a>
+      <a href="#hizmetver" class="block px-3 py-2 rounded-md font-medium bg-armut text-white text-center">Hizmet Ver</a>
+      <a href="#admin" class="block px-3 py-2 rounded-md font-medium text-slate-500 hover:bg-slate-100"><i class="fa-solid fa-lock mr-2"></i>Admin Paneli</a>
+    </div>
+  </header>
+
+  <!-- Dinamik Sayfa İçerikleri (SPA Container) -->
+  <main id="app-content" class="flex-grow">
+    <!-- JS ile yönlendirilen sayfalar yüklenecektir -->
+  </main>
+
+  <!-- İlan Verme / Teklif Verme Modalı -->
+  <div id="modal-offer" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl relative animate-fade-in">
+      <button onclick="closeModal('modal-offer')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-xl font-bold">&times;</button>
+      <h3 class="text-xl font-bold text-slate-900 mb-2 flex items-center gap-2">
+        <i class="fa-solid fa-handshake text-armut"></i> Teklif Ver
+      </h3>
+      <p class="text-sm text-slate-600 mb-4" id="modal-job-title">İlan Başlığı</p>
+      <form id="form-submit-quote" class="space-y-4">
+        <input type="hidden" id="quote-job-id">
+        <div class="bg-emerald-50 border border-emerald-200 p-3 rounded-lg text-xs text-emerald-800 flex justify-between items-center">
+          <span>Otomatik Teklif Ücreti (Bakiyeden Düşer):</span>
+          <strong id="quote-calculated-fee" class="text-base text-armut font-black">200 TL</strong>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Müşteriye Sunacağınız Teklif Tutarı (TL)</label>
+          <input type="number" id="quote-price" required placeholder="Örn: 2500" class="w-full border border-slate-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-armut focus:border-armut outline-none">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Teklif Açıklamanız ve Detaylar</label>
+          <textarea id="quote-note" rows="3" required placeholder="Ne zaman başlayabilirsiniz, malzemeniz var mı vb..." class="w-full border border-slate-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-armut focus:border-armut outline-none"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-armut hover:bg-armut-dark text-white font-bold py-3 rounded-xl transition shadow-lg text-sm">
+          Teklifi Gönder ve Bakiyeden Düş
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Alt Bilgi (Footer) -->
+  <footer class="bg-slate-900 text-slate-300 border-t border-slate-800 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-armut text-white flex items-center justify-center font-black text-xl">
+              İV
+            </div>
+            <span class="text-xl font-black text-white">İş Var – Ustanı Bul</span>
+          </div>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            İhtiyacın olan hizmete kolayca ulaş, usta tekliflerini karşılaştır ve bekleyen tüm işlerini güvenle hallet.
+          </p>
+        </div>
+        <div>
+          <h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Popüler Kategoriler</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li><a href="#temizlik" class="hover:text-armut transition">Ev Temizliği</a></li>
+            <li><a href="#tadilat" class="hover:text-armut transition">Boya Badana & Tadilat</a></li>
+            <li><a href="#nakliyat" class="hover:text-armut transition">Evden Eve Nakliyat</a></li>
+            <li><a href="#ozelders" class="hover:text-armut transition">Matematik Özel Ders</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Hızlı Bağlantılar</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li><a href="#hizmetver" class="hover:text-armut transition">Hizmet Ver / Usta Ol</a></li>
+            <li><a href="#bakiye" class="hover:text-armut transition">Bakiye Yükleme Robotu</a></li>
+            <li><a href="#yardim" class="hover:text-armut transition">Sıkça Sorulan Sorular</a></li>
+            <li><a href="#admin" class="hover:text-armut transition">Yönetici Paneli</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">İletişim & Destek</h4>
+          <p class="text-xs text-slate-400 mb-2">Sorularınız için destek ekibimize ulaşabilirsiniz:</p>
+          <a href="mailto:destekisvarustanibul@outlook.com" class="text-armut font-semibold text-sm hover:underline block mb-4">
+            <i class="fa-regular fa-envelope mr-1"></i> destekisvarustanibul@outlook.com
+          </a>
+          <div class="flex space-x-3 text-slate-400">
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-armut hover:text-white transition"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-armut hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center hover:bg-armut hover:text-white transition"><i class="fa-brands fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-slate-800 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
+        <p>&copy; 2025 İş Var – Ustanı Bul. Tüm hakları saklıdır.</p>
+        <p class="mt-2 sm:mt-0">İş Var Garantisi ile %100 Güvenli Hizmet</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>/* =======================================================
+   İş Var – Ustanı Bul | Temel State ve LocalStorage Verileri
+   ======================================================= */
+
+const DEFAULT_ADMIN_PASS = "admin123";
+const NOTIFICATION_EMAILS = ["destekisvarustanibul@outlook.com", "bakarosman84@gmail.com", "iscilergeliyor@gmail.com"];
+
+// Varsayılan Veri Kurulumu
+function initLocalStorage() {
+  if (!localStorage.getItem("iv_admin_pass")) {
+    localStorage.setItem("iv_admin_pass", DEFAULT_ADMIN_PASS);
+  }
+  if (!localStorage.getItem("iv_bank_accounts")) {
+    const initialBanks = [
+      { id: 1, bankName: "Ziraat Bankası", iban: "TR62 0001 0000 1234 5678 9000 01", holder: "İş Var Teknoloji A.Ş." },
+      { id: 2, bankName: "Garanti BBVA", iban: "TR33 0006 2000 0000 9876 5432 10", holder: "İş Var Teknoloji A.Ş." },
+      { id: 3, bankName: "İş Bankası", iban: "TR91 0006 4000 0001 1122 3344 55", holder: "İş Var Teknoloji A.Ş." }
+    ];
+    localStorage.setItem("iv_bank_accounts", JSON.stringify(initialBanks));
+  }
+  if (!localStorage.getItem("iv_balance_requests")) {
+    const initialReqs = [
+      { id: 101, user: "Can Can", amount: 1000, time: "14:30", receipt: "dekont_101.pdf", status: "pending", createdAt: new Date().toLocaleDateString('tr-TR') },
+      { id: 102, user: "Ahmet Yılmaz", amount: 500, time: "11:15", receipt: "dekont_102.jpg", status: "approved", createdAt: new Date().toLocaleDateString('tr-TR') }
+    ];
+    localStorage.setItem("iv_balance_requests", JSON.stringify(initialReqs));
+  }
+  if (!localStorage.getItem("iv_jobs")) {
+    const initialJobs = [
+      { id: 1, title: "3+1 Daire Detaylı Temizlik", category: "temizlik", city: "İstanbul", district: "Kadıköy", budget: 2500, desc: "Taşınma öncesi dip köşe boş ev temizliği yapılacaktır. Malzemeler ustaya aittir.", date: "Bugün", status: "open" },
+      { id: 2, title: "Salon Boya Badana İşleri", category: "tadilat", city: "Ankara", district: "Çankaya", budget: 4500, desc: "Yaklaşık 45m2 salon Jotun boya ile 2 kat boyanacaktır.", date: "Dün", status: "open" },
+      { id: 3, title: "Evden Eve Şehir İçi Nakliye", category: "nakliyat", city: "İzmir", district: "Karşıyaka", budget: 6000, desc: "2+1 eşya asansörlü araç ile 3 km mesafeye taşınacak.", date: "2 gün önce", status: "open" },
+      { id: 4, title: "Lise YKS Matematik Özel Ders", category: "ozelders", city: "Bursa", district: "Nilüfer", budget: 800, desc: "Haftada 2 saat birebir yüz yüze ders anlatımı ve soru çözümü.", date: "Bugün", status: "open" },
+      { id: 5, title: "Kombi Bakımı ve Petek Temizliği", category: "tamir", city: "Antalya", district: "Muratpaşa", budget: 1200, desc: "Demirdöküm marka kombi ve 6 adet petek yıkanıp temizlenecek.", date: "3 gün önce", status: "open" }
+    ];
+    localStorage.setItem("iv_jobs", JSON.stringify(initialJobs));
+  }
+  if (!localStorage.getItem("iv_current_user")) {
+    localStorage.setItem("iv_current_user", JSON.stringify({ name: "Örnek Kullanıcı", role: "master", balance: 1200 }));
+  }
+}
+
+initLocalStorage();
+
+// Yardımcı State Getiriciler
+function getBankAccounts() { return JSON.parse(localStorage.getItem("iv_bank_accounts") || "[]"); }
+function saveBankAccounts(data) { localStorage.setItem("iv_bank_accounts", JSON.stringify(data)); }
+function getBalanceRequests() { return JSON.parse(localStorage.getItem("iv_balance_requests") || "[]"); }
+function saveBalanceRequests(data) { localStorage.setItem("iv_balance_requests", JSON.stringify(data)); }
+function getJobs() { return JSON.parse(localStorage.getItem("iv_jobs") || "[]"); }
+function saveJobs(data) { localStorage.setItem("iv_jobs", JSON.stringify(data)); }
+function getCurrentUser() { return JSON.parse(localStorage.getItem("iv_current_user")); }
+function saveCurrentUser(user) { localStorage.setItem("iv_current_user", JSON.stringify(user)); updateBalanceUI(); }
+function getAdminPass() { return localStorage.getItem("iv_admin_pass") || DEFAULT_ADMIN_PASS; }
+
+// Teklif Komisyonu / Ücret Hesabı (Küçük iş 200 TL, büyük işlerde artarak 5000 TL'ye kadar)
+function calculateQuoteFee(budget) {
+  let b = parseFloat(budget) || 1000;
+  if (b <= 1500) return 200;
+  if (b <= 3000) return 400;
+  if (b <= 5000) return 600;
+  if (b <= 10000) return 1000;
+  if (b <= 25000) return 2500;
+  return 5000;
+}
+
+// SPA Routing & Navigation
+window.addEventListener("hashchange", handleRoute);
+window.addEventListener("DOMContentLoaded", () => {
+  handleRoute();
+  updateBalanceUI();
+  setupMobileMenu();
+});
+
+function setupMobileMenu() {
+  const btn = document.getElementById("mobile-menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  if (btn && menu) {
+    btn.addEventListener("click", () => menu.classList.toggle("hidden"));
+  }
+}
+
+function updateBalanceUI() {
+  const user = getCurrentUser();
+  const badge = document.getElementById("user-balance-badge");
+  const val = document.getElementById("user-balance-val");
+  if (user && badge && val) {
+    badge.classList.remove("hidden");
+    badge.classList.add("flex");
+    val.textContent = user.balance.toLocaleString('tr-TR');
+  }
+}
+
+function handleRoute() {
+  const hash = window.location.hash || "#anasayfa";
+  const app = document.getElementById("app-content");
+  window.scrollTo(0, 0);
+
+  if (hash === "#anasayfa") {
+    renderHomePage(app);
+  } else if (hash.startsWith("#temizlik") || hash.startsWith("#tadilat") || hash.startsWith("#nakliyat") || hash.startsWith("#tamir") || hash.startsWith("#ozelders") || hash.startsWith("#organizasyon") || hash.startsWith("#diger")) {
+    const cat = hash.replace("#", "");
+    renderCategoryPage(app, cat);
+  } else if (hash === "#yardim") {
+    renderHelpPage(app);
+  } else if (hash === "#bakiye") {
+    renderBalancePage(app);
+  } else if (hash === "#hizmetver") {
+    renderPostJobPage(app);
+  } else if (hash === "#giris") {
+    renderAuthPage(app);
+  } else if (hash === "#admin") {
+    renderAdminAuth(app);
+  } else if (hash === "#admin-panel") {
+    renderAdminPanel(app);
+  } else {
+    renderHomePage(app);
+  }
+}
+
+/* =======================================================
+   SAYFA RENDERLERİ
+   ======================================================= */
+
+// 1. ANA SAYFA
+function renderHomePage(container) {
+  const jobs = getJobs();
+  const visualServices = [
+    { title: "İnşaat & Taahhüt", img: "https://images.unsplash.com/photo-1541888946425-d0fbb186a5b7?w=500&auto=format&fit=crop", cat: "tadilat" },
+    { title: "Ev & Ofis Temizliği", img: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=500&auto=format&fit=crop", cat: "temizlik" },
+    { title: "Evden Eve Taşımacılık", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&auto=format&fit=crop", cat: "nakliyat" },
+    { title: "Boya & Badana İşleri", img: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=500&auto=format&fit=crop", cat: "tadilat" },
+    { title: "Ortaokul & Lise Özel Ders", img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=500&auto=format&fit=crop", cat: "ozelders" },
+    { title: "Petek & Kombi Temizliği", img: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&auto=format&fit=crop", cat: "tamir" },
+    { title: "İngilizce Özel Ders", img: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500&auto=format&fit=crop", cat: "ozelders" },
+    { title: "Evde Fizik Tedavi", img: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=500&auto=format&fit=crop", cat: "diger" },
+    { title: "Şehir İçi Eşya Taşıma", img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=500&auto=format&fit=crop", cat: "nakliyat" },
+    { title: "Banyo & Mutfak Tadilatı", img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=500&auto=format&fit=crop", cat: "tadilat" },
+    { title: "Catering & Organizasyon", img: "https://images.unsplash.com/photo-1555244162-803834f70033?w=500&auto=format&fit=crop", cat: "organizasyon" }
+  ];
+
+  container.innerHTML = `
+    <!-- Hero Bölümü -->
+    <section class="bg-gradient-to-br from-emerald-600 via-armut to-emerald-800 text-white py-16 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
+      <div class="max-w-4xl mx-auto relative z-10">
+        <span class="bg-white/20 text-white font-semibold text-xs px-3 py-1 rounded-full uppercase tracking-widest mb-4 inline-block">%100 Hizmet Garantisi</span>
+        <h1 class="text-3xl sm:text-5xl font-black mb-4 tracking-tight leading-tight">
+          İhtiyacın olan hizmete kolayca ulaş, bekleyen işlerini hallet
+        </h1>
+        <p class="text-slate-100 text-base sm:text-lg mb-8 font-medium">
+          Binlerce onaylı usta ve uzman İş Var platformunda teklif vermek için bekliyor.
+        </p>
+        
+        <!-- Arama Kutusu -->
+        <div class="bg-white p-2 sm:p-3 rounded-2xl shadow-2xl max-w-2xl mx-auto flex flex-col sm:flex-row gap-2">
+          <div class="flex-1 flex items-center px-3 bg-slate-50 rounded-xl border border-slate-200">
+            <i class="fa-solid fa-magnifying-glass text-slate-400 mr-3 text-lg"></i>
+            <input type="text" id="home-search-input" placeholder="Hangi hizmeti arıyorsun? (Örn: Boyacı, Temizlik...)" class="w-full bg-transparent py-3 text-slate-800 text-sm focus:outline-none font-medium">
+          </div>
+          <button onclick="executeSearch()" class="bg-armut hover:bg-armut-dark text-white font-bold px-8 py-3.5 rounded-xl transition shadow-md flex items-center justify-center gap-2 text-sm sm:w-auto w-full">
+            <span>Hizmet Bul</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hizmet Görselleri & Galerisi -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex justify-between items-end mb-8">
+        <div>
+          <h2 class="text-2xl font-black text-slate-900">Tüm İş Dünyası Görselleri & Hizmetler</h2>
+          <p class="text-sm text-slate-500">İhtiyacınız olan alanı seçin ve anında teklif alın</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        ${visualServices.map(s => `
+          <a href="#${s.cat}" class="category-card bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm group hover:border-armut">
+            <div class="h-28 overflow-hidden relative">
+              <img src="${s.img}" alt="${s.title}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            </div>
+            <div class="p-3 text-center">
+              <h3 class="text-xs font-bold text-slate-800 group-hover:text-armut transition line-clamp-1">${s.title}</h3>
+            </div>
+          </a>
+        `).join('')}
+      </div>
+    </section>
+
+    <!-- Haftanın Trend Hizmetleri -->
+    <section class="bg-slate-100/70 py-12 border-y border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-black text-slate-900 mb-6 flex items-center gap-2">
+          <i class="fa-solid fa-fire text-amber-500"></i> Haftanın Trend Hizmetleri
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition">
+            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-armut flex items-center justify-center mb-4 font-bold text-lg"><i class="fa-solid fa-square-root-variable"></i></div>
+            <h3 class="font-bold text-slate-900 mb-1">Matematik Özel Ders</h3>
+            <p class="text-xs text-slate-500 mb-3">LGS, YKS ve Okul Sınavlarına Hazırlık Uzman Öğretmenler</p>
+            <a href="#ozelders" class="text-xs font-bold text-armut hover:underline inline-flex items-center gap-1">Teklif İncele <i class="fa-solid fa-chevron-right text-[10px]"></i></a>
+          </div>
+          <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition">
+            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-armut flex items-center justify-center mb-4 font-bold text-lg"><i class="fa-solid fa-broom"></i></div>
+            <h3 class="font-bold text-slate-900 mb-1">Ev Temizliği</h3>
+            <p class="text-xs text-slate-500 mb-3">Gündelik veya Detaylı Boş/Dolu Ev Temizlik Hizmeti</p>
+            <a href="#temizlik" class="text-xs font-bold text-armut hover:underline inline-flex items-center gap-1">Teklif İncele <i class="fa-solid fa-chevron-right text-[10px]"></i></a>
+          </div>
+          <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition">
+            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-armut flex items-center justify-center mb-4 font-bold text-lg"><i class="fa-solid fa-paint-roller"></i></div>
+            <h3 class="font-bold text-slate-900 mb-1">Boya Badana</h3>
+            <p class="text-xs text-slate-500 mb-3">Temiz İşçilikli İç Mekan Ev ve İş Yeri Boyama</p>
+            <a href="#tadilat" class="text-xs font-bold text-armut hover:underline inline-flex items-center gap-1">Teklif İncele <i class="fa-solid fa-chevron-right text-[10px]"></i></a>
+          </div>
+          <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition">
+            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-armut flex items-center justify-center mb-4 font-bold text-lg"><i class="fa-solid fa-truck-ramp-box"></i></div>
+            <h3 class="font-bold text-slate-900 mb-1">Nakliyat</h3>
+            <p class="text-xs text-slate-500 mb-3">Sigortalı ve Asansörlü Evden Eve Taşımacılık</p>
+            <a href="#nakliyat" class="text-xs font-bold text-armut hover:underline inline-flex items-center gap-1">Teklif İncele <i class="fa-solid fa-chevron-right text-[10px]"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Aktif İlanlar & Talepler -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+        <div>
+          <h2 class="text-2xl font-black text-slate-900">Güncel Müşteri Talepleri ve İş İlanları</h2>
+          <p class="text-sm text-slate-500">Usta mısın? Hemen uygun işe teklif ver, bakiyenden düşsün</p>
+        </div>
+        <a href="#hizmetver" class="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition inline-flex items-center gap-2 self-start">
+          <i class="fa-solid fa-plus-circle text-armut"></i> Ücretsiz İlan Ver
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        ${jobs.map(job => {
+          const fee = calculateQuoteFee(job.budget);
+          return `
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+              <div>
+                <div class="flex justify-between items-start mb-3">
+                  <span class="bg-emerald-50 text-armut font-bold text-[11px] px-2.5 py-1 rounded-md uppercase tracking-wide border border-emerald-100">${job.category}</span>
+                  <span class="text-xs text-slate-400 font-medium"><i class="fa-regular fa-clock mr-1"></i>${job.date}</span>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 mb-2 leading-snug">${job.title}</h3>
+                <p class="text-xs text-slate-600 mb-4 line-clamp-2 leading-relaxed">${job.desc}</p>
+                <div class="flex items-center gap-4 text-xs font-semibold text-slate-500 mb-4 bg-slate-50 p-3 rounded-xl">
+                  <div><i class="fa-solid fa-location-dot text-slate-400 mr-1"></i>${job.city} / ${job.district}</div>
+                  <div><i class="fa-solid fa-turkish-lira-sign text-armut mr-1"></i>Tahmini: <strong>${job.budget} TL</strong></div>
+                </div>
+              </div>
+              <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                <div>
+                  <span class="block text-[10px] text-slate-400 font-bold uppercase">Teklif Ücreti</span>
+                  <span class="text-sm font-black text-armut">${fee} TL</span>
+                </div>
+                <button onclick="openQuoteModal(${job.id}, '${job.title.replace(/'/g, "\\'")}', ${fee})" class="bg-armut hover:bg-armut-dark text-white font-bold text-xs px-4 py-2.5 rounded-xl transition shadow-sm">
+                  Teklif Ver
+                </button>
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    </section>
+
+    <!-- En Yakın Hizmetler (Şehirlere Göre) -->
+    <section class="bg-slate-900 text-white py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-black mb-6 text-center">En Yakın Hizmet Bölgeleri</h2>
+        <div class="flex flex-wrap justify-center gap-3">
+          ${["İstanbul", "Ankara", "İzmir", "Antalya", "Bursa", "Muğla", "Adana", "Kocaeli"].map(city => `
+            <button onclick="filterByCity('${city}')" class="bg-slate-800 hover:bg-armut text-slate-200 font-medium text-xs px-5 py-3 rounded-xl transition border border-slate-700 flex items-center gap-2">
+              <i class="fa-solid fa-city text-armut"></i> ${city} Usta ve Hizmetleri
+            </button>
+          `).join('')}
+        </div>
+      </div>
+    </section>
+
+    <!-- Nasıl Çalışır? -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-3xl font-black text-slate-900 mb-3">Nasıl Çalışır?</h2>
+        <p class="text-sm text-slate-500">Sadece 3 basit adımda istediğin ustayı veya hizmeti kolayca bulabilirsin.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-2xl border border-slate-200 text-center relative shadow-sm">
+          <div class="w-16 h-16 rounded-2xl bg-emerald-100 text-armut font-black text-2xl flex items-center justify-center mx-auto mb-6 shadow-inner">
+            1
+          </div>
+          <h3 class="font-bold text-lg text-slate-900 mb-2">İhtiyacını Anlat</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">Hangi hizmete ne zaman ve nerede ihtiyacın olduğunu birkaç soruda detaylıca belirt.</p>
+        </div>
+        <div class="bg-white p-8 rounded-2xl border border-slate-200 text-center relative shadow-sm">
+          <div class="w-16 h-16 rounded-2xl bg-emerald-100 text-armut font-black text-2xl flex items-center justify-center mx-auto mb-6 shadow-inner">
+            2
+          </div>
+          <h3 class="font-bold text-lg text-slate-900 mb-2">Gelen Teklifleri Al</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">Onaylı ve puanlanmış en iyi ustalardan dakikalar içinde fiyat teklifleri gelsin.</p>
+        </div>
+        <div class="bg-white p-8 rounded-2xl border border-slate-200 text-center relative shadow-sm">
+          <div class="w-16 h-16 rounded-2xl bg-emerald-100 text-armut font-black text-2xl flex items-center justify-center mx-auto mb-6 shadow-inner">
+            3
+          </div>
+          <h3 class="font-bold text-lg text-slate-900 mb-2">Karşılaştır ve Seç</h3>
+          <p class="text-xs text-slate-500 leading-relaxed">Usta yorumlarını incele, bütçene en uygun olanı seç ve işini güvenle tamamlat.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- İş Var Garantisi -->
+    <section class="bg-emerald-50 border-y border-emerald-100 py-12 mb-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-5">
+          <div class="w-16 h-16 rounded-full bg-armut text-white text-3xl flex items-center justify-center shrink-0 shadow-lg">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-black text-slate-900 mb-1">İş Var Garantisi Altındasınız</h3>
+            <p class="text-xs text-slate-600 max-w-xl">Platformumuz üzerinden anlaştığınız tüm işler ve ödemeler koruma altındadır. İstenmeyen durumlarda destek ekibimiz 7/24 yanınızda.</p>
+          </div>
+        </div>
+        <a href="#yardim" class="bg-armut text-white font-bold text-xs px-6 py-3.5 rounded-xl hover:bg-armut-dark transition shrink-0 shadow-md">
+          Garantimiz Hakkında Detaylar
+        </a>
+      </div>
+    </section>
+  `;
+}
+
+// 2. KATEGORİ SAYFASI
+function renderCategoryPage(container, categoryKey) {
+  const jobs = getJobs().filter(j => j.category === categoryKey);
+  const titles = {
+    temizlik: "Temizlik Hizmetleri",
+    tadilat: "Tadilat & Dekorasyon",
+    nakliyat: "Nakliyat & Taşımacılık",
+    tamir: "Tamir & Bakım Servisleri",
+    ozelders: "Özel Ders Verenler",
+    organizasyon: "Organizasyon & Etkinlik",
+    diger: "Diğer Tüm Hizmetler"
+  };
+
+  container.innerHTML = `
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 mb-8 shadow-sm flex items-center justify-between">
+        <div>
+          <span class="text-xs font-bold text-armut uppercase tracking-wider block mb-1">Kategori İnceleme</span>
+          <h1 class="text-2xl sm:text-3xl font-black text-slate-900">${titles[categoryKey] || "Hizmet İlanları"}</h1>
+        </div>
+        <a href="#anasayfa" class="text-xs font-semibold text-slate-500 hover:text-slate-800"><i class="fa-solid fa-arrow-left mr-1"></i> Ana Sayfaya Dön</a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        ${jobs.length === 0 ? `
+          <div class="col-span-full text-center py-12 bg-white rounded-2xl border border-slate-200">
+            <i class="fa-solid fa-folder-open text-4xl text-slate-300 mb-3 block"></i>
+            <p class="text-slate-500 text-sm font-medium">Bu kategoride henüz yayınlanmış aktif bir talep bulunamadı.</p>
+            <a href="#hizmetver" class="inline-block mt-4 text-xs font-bold text-armut hover:underline">+ İlk Talep Oluşturan Siz Olun</a>
+          </div>
+        ` : jobs.map(job => {
+          const fee = calculateQuoteFee(job.budget);
+          return `
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+              <div>
+                <span class="bg-emerald-50 text-armut font-bold text-[10px] px-2 py-1 rounded border border-emerald-100 uppercase">${job.city}</span>
+                <h3 class="text-base font-bold text-slate-900 mt-2 mb-2">${job.title}</h3>
+                <p class="text-xs text-slate-600 mb-4 leading-relaxed">${job.desc}</p>
+              </div>
+              <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-700">Bütçe: ${job.budget} TL</span>
+                <button onclick="openQuoteModal(${job.id}, '${job.title.replace(/'/g, "\\'")}', ${fee})" class="bg-armut text-white font-bold text-xs px-4 py-2 rounded-lg hover:bg-armut-dark transition">
+                  Teklif Ver (${fee} TL)
+                </button>
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    </div>
+  `;
+}
+
+// 3. BAKİYE YÜKLEME ROBOTU SAYFASI
+function renderBalancePage(container) {
+  const bankAccounts = getBankAccounts();
+  const currentUser = getCurrentUser();
+
+  container.innerHTML = `
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm mb-8 text-center">
+        <div class="w-12 h-12 rounded-full bg-emerald-100 text-armut flex items-center justify-center mx-auto mb-3 font-bold text-xl">
+          <i class="fa-solid fa-robot"></i>
+        </div>
+        <h1 class="text-2xl font-black text-slate-900 mb-1">Otomatik Bakiye Yükleme Robotu</h1>
+        <p class="text-xs text-slate-500">Aşağıdaki resmi banka hesaplarımıza havale/EFT yapıp dekont bilgilerinizi girdiğinizde bakiyeniz admin onayından sonra anında güncellenir.</p>
+        <div class="mt-4 inline-block bg-slate-100 px-4 py-2 rounded-xl text-xs font-bold text-slate-700">
+          Mevcut Bakiyeniz: <span class="text-armut font-black text-sm">${currentUser.balance.toLocaleString('tr-TR')} TL</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+        <!-- Banka Hesaplarımız -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+          <h3 class="text-sm font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-building-columns text-armut"></i> Resmi Banka Hesaplarımız
+          </h3>
+          <div class="space-y-3">
+            ${bankAccounts.length === 0 ? `<p class="text-xs text-slate-400">Kayıtlı banka hesabı yok.</p>` : bankAccounts.map(b => `
+              <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 text-xs">
+                <strong class="text-slate-800 font-bold block mb-0.5">${b.bankName}</strong>
+                <span class="text-slate-500 block font-mono text-[11px] mb-1">${b.iban}</span>
+                <span class="text-slate-400 font-medium block">Alıcı: ${b.holder}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- Dekont Bildirim Formu -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+          <h3 class="text-sm font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-receipt text-armut"></i> Havale / Dekont Bildirim Formu
+          </h3>
+          <form id="form-balance-robot" class="space-y-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Adınız Soyadınız</label>
+              <input type="text" id="robot-fullname" required value="${currentUser.name}" class="w-full border border-slate-300 rounded-lg p-2.5 text-xs focus:ring-2 focus:ring-armut outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Gönderilen Tutar (TL)</label>
+              <input type="number" id="robot-amount" required placeholder="Örn: 1000" class="w-full border border-slate-300 rounded-lg p-2.5 text-xs focus:ring-2 focus:ring-armut outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">İşlem Saati</label>
+              <input type="text" id="robot-time" required placeholder="Örn: 14:30" class="w-full border border-slate-300 rounded-lg p-2.5 text-xs focus:ring-2 focus:ring-armut outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Dekont Belgesi / Numarası</label>
+              <input type="text" id="robot-receipt" required placeholder="Örn: dekont_12345.pdf veya Referans No" class="w-full border border-slate-300 rounded-lg p-2.5 text-xs focus:ring-2 focus:ring-armut outline-none">
+            </div>
+            <button type="submit" class="w-full bg-armut hover:bg-armut-dark text-white font-bold py-3 rounded-xl transition text-xs shadow-md">
+              Bakiye Bildirimini Robot ile Admin'e İlet
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById("form-balance-robot").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("robot-fullname").value;
+    const amt = parseFloat(document.getElementById("robot-amount").value);
+    const time = document.getElementById("robot-time").value;
+    const rcpt = document.getElementById("robot-receipt").value;
+
+    const reqs = getBalanceRequests();
+    reqs.unshift({
+      id: Date.now(),
+      user: name,
+      amount: amt,
+      time: time,
+      receipt: rcpt,
+      status: "pending",
+      createdAt: new Date().toLocaleDateString('tr-TR')
+    });
+    saveBalanceRequests(reqs);
+    alert("Bakiye yükleme bildiriminiz kaydedildi! Admin onay verdikten sonra hesabınıza aktarılacaktır.");
+    window.location.hash = "#anasayfa";
+  });
+}
+
+// 4. İLAN VERME / HİZMET OLUŞTURMA SAYFASI
+function renderPostJobPage(container) {
+  container.innerHTML = `
+    <div class="max-w-2xl mx-auto px-4 py-10">
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+        <h1 class="text-2xl font-black text-slate-900 mb-2 flex items-center gap-2">
+          <i class="fa-solid fa-square-plus text-armut"></i> Ücretsiz Hizmet Talebi / İş İlanı Oluştur
+        </h1>
+        <p class="text-xs text-slate-500 mb-6">İhtiyacınızı detaylı anlatın, Türkiye'nin dört bir yanındaki ustalardan teklif alın.</p>
+        
+        <form id="form-create-job" class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">İlan Başlığı</label>
+            <input type="text" id="job-title" required placeholder="Örn: 2+1 Daire Boya Badana Hizmeti" class="w-full border border-slate-300 rounded-xl p-3 text-xs focus:ring-2 focus:ring-armut outline-none">
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Kategori</label>
+              <select id="job-category" class="w-full border border-slate-300 rounded-xl p-3 text-xs focus:ring-2 focus:ring-armut outline-none">
+                <option value="temizlik">Temizlik</option>
+                <option value="tadilat">Tadilat</option>
+                <option value="nakliyat">Nakliyat</option>
+                <option value="tamir">Tamir</option>
+                <option value="ozelders">Özel Ders</option>
+                <option value="organizasyon">Organizasyon</option>
+                <option value="diger">Diğer</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Tahmini Bütçeniz (TL)</label>
+              <input type="number" id="job-budget" required placeholder="Örn: 3000" class="w-full border border-slate-300 rounded-xl p-3 text-xs focus:ring-2 focus:ring-armut outline-none">
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">İl</label>
+              <input type="text" id="job-city" required placeholder="Örn: İstanbul" class="w-full border border-slate-300 rounded-xl p-3 text-xs focus:ring-2 focus:ring-armut outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">İlçe</label>
+              <input type="text" id="job-district" required placeholder="Örn: Kadıköy" class="w-full border border-slate-300 rounded-xl p-3 text-xs focus:ring-2 focus:ring-armut outline-none">
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">İş Detayları ve Açıklama</label>
+            <textarea id="job-desc" rows="4" required placeholder="İşin yapılacağı tarih, özel istekler, malzeme durumu..." class="w-full border border-slate-300 rounded-xl p-3 text-xs focus:ring-2 focus:ring-armut outline-none"></textarea>
+          </div>
+          <button type="submit" class="w-full bg-armut hover:bg-armut-dark text-white font-bold py-3.5 rounded-xl transition text-sm shadow-md">
+            Hemen İlanı Yayınla
+          </button>
+        </form>
+      </div>
+    </div>
+  `;
+
+  document.getElementById("form-create-job").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const jobs = getJobs();
+    jobs.unshift({
+      id: Date.now(),
+      title: document.getElementById("job-title").value,
+      category: document.getElementById("job-category").value,
+      city: document.getElementById("job-city").value,
+      district: document.getElementById("job-district").value,
+      budget: parseFloat(document.getElementById("job-budget").value),
+      desc: document.getElementById("job-desc").value,
+      date: "Bugün",
+      status: "open"
+    });
+    saveJobs(jobs);
+    alert("Talebiniz başarıyla yayınlandı! Ustaların teklif vermesini bekleyebilirsiniz.");
+    window.location.hash = "#anasayfa";
+  });
+}
+
+// 5. YARDIM & DESTEK SAYFASI
+function renderHelpPage(container) {
+  container.innerHTML = `
+    <div class="max-w-4xl mx-auto px-4 py-10">
+      <div class="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm mb-8">
+        <h1 class="text-3xl font-black text-slate-900 mb-3">Yardım ve Destek Merkezi</h1>
+        <p class="text-xs text-slate-500 mb-6">Sorularınız için bize e-posta yoluyla 7/24 ulaşabilirsiniz.</p>
+        <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-xl flex items-center gap-3 mb-6">
+          <i class="fa-solid fa-envelope-open-text text-armut text-2xl"></i>
+          <div>
+            <span class="block text-xs font-bold text-slate-700">Resmi Destek E-Posta Adresimiz:</span>
+            <a href="mailto:destekisvarustanibul@outlook.com" class="text-armut font-bold text-sm hover:underline">destekisvarustanibul@outlook.com</a>
+          </div>
+        </div>
+        <div class="space-y-4 text-xs text-slate-600">
+          <div class="border-b border-slate-100 pb-3">
+            <strong class="block text-slate-900 font-bold mb-1">Teklif ücretleri bakiyeden nasıl düşer?</strong>
+            <p>Usta olarak bir ilana teklif verdiğinizde iş büyüklüğüne göre otomatik teklif ücreti (min 200 TL) bakiyenizden düşülür.</p>
+          </div>
+          <div class="border-b border-slate-100 pb-3">
+            <strong class="block text-slate-900 font-bold mb-1">Bakiyemi nasıl yükleyebilirim?</strong>
+            <p>Bakiye Yükle bölümündeki banka hesaplarımıza ödemenizi yapıp robot ekranına dekont saatinizi ve adınızı yazarak bildirim yapabilirsiniz.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// 6. GİRİŞ & KAYIT SAYFASI
+function renderAuthPage(container) {
+  container.innerHTML = `
+    <div class="max-w-md mx-auto px-4 py-12">
+      <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+        <h2 class="text-xl font-black text-slate-900 mb-4 text-center">Kullanıcı Girişi / Kayıt</h2>
+        <form id="form-user-auth" class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Adınız Soyadınız</label>
+            <input type="text" id="auth-name" required placeholder="Ahmet Yılmaz" class="w-full border border-slate-300 rounded-lg p-2.5 text-xs outline-none focus:ring-2 focus:ring-armut">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">E-Posta Adresi</label>
+            <input type="email" id="auth-email" required placeholder="ornek@mail.com" class="w-full border border-slate-300 rounded-lg p-2.5 text-xs outline-none focus:ring-2 focus:ring-armut">
+          </div>
+          <button type="submit" class="w-full bg-armut hover:bg-armut-dark text-white font-bold py-3 rounded-xl transition text-xs shadow-md">
+            Giriş Yap / Devam Et
+          </button>
+        </form>
+      </div>
+    </div>
+  `;
+  document.getElementById("form-user-auth").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("auth-name").value;
+    saveCurrentUser({ name: name, role: "master", balance: 1000 });
+    alert(`Hoş geldiniz Sayın ${name}. Hesabınıza 1.000 TL başlangıç bakiyesi tanımlandı.`);
+    window.location.hash = "#anasayfa";
+  });
+}
+
+/* =======================================================
+   ADMİN GİRİŞİ & ADMİN PANELİ (GİZLİ SEKTÖR)
+   ======================================================= */
+
+function renderAdminAuth(container) {
+  container.innerHTML = `
+    <div class="max-w-md mx-auto px-4 py-16">
+      <div class="bg-slate-900 text-white p-8 rounded-2xl shadow-2xl border border-slate-800">
+        <div class="text-center mb-6">
+          <div class="w-12 h-12 bg-armut rounded-xl flex items-center justify-center mx-auto mb-2 text-white font-bold text-xl">
+            <i class="fa-solid fa-user-lock"></i>
+          </div>
+          <h2 class="text-xl font-black tracking-tight">Gizli Admin Girişi</h2>
+          <p class="text-xs text-slate-400">Lütfen yönetici şifrenizi giriniz</p>
+        </div>
+        <form id="form-admin-login" class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1">Admin Şifresi</label>
+            <input type="password" id="admin-input-pass" required placeholder="••••••••" class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-armut">
+          </div>
+          <button type="submit" class="w-full bg-armut hover:bg-armut-dark text-white font-bold py-3 rounded-xl transition text-xs shadow-lg">
+            Güvenli Giriş Yap
+          </button>
+        </form>
+      </div>
+    </div>
+  `;
+
+  document.getElementById("form-admin-login").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const entered = document.getElementById("admin-input-pass").value;
+    const realPass = getAdminPass();
+
+    if (entered === realPass) {
+      sessionStorage.setItem("iv_admin_logged", "true");
+      window.location.hash = "#admin-panel";
+    } else {
+      // Hatalı şifre girildiğinde güvenlik e-postaları uyarısı
+      alert(`HATALI ŞİFRE! \n\nGüvenlik uyarısı şu e-posta adreslerine iletildi:\n- ${NOTIFICATION_EMAILS.join("\n- ")}`);
+    }
+  });
+}
+
+// GİZLİ ADMİN PANELİ
+function renderAdminPanel(container) {
+  if (sessionStorage.getItem("iv_admin_logged") !== "true") {
+    window.location.hash = "#admin";
+    return;
+  }
+
+  const bankAccounts = getBankAccounts();
+  const balanceRequests = getBalanceRequests();
+  const jobs = getJobs();
+
+  container.innerHTML = `
+    <div class="bg-slate-900 text-slate-100 min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        
+        <!-- Header & Güvenli Çıkış -->
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-slate-800 p-6 rounded-2xl border border-slate-700 mb-8 gap-4 shadow-xl">
+          <div>
+            <span class="text-xs font-bold text-armut uppercase tracking-wider block mb-1">Yönetim Paneli</span>
+            <h1 class="text-2xl font-black text-white flex items-center gap-2">
+              <i class="fa-solid fa-sliders text-armut"></i> İş Var Admin Denetim Merkezi
+            </h1>
+          </div>
+          <div class="flex items-center gap-3">
+            <button onclick="openChangeAdminPassModal()" class="bg-slate-700 hover:bg-slate-600 text-xs font-bold text-white px-4 py-2.5 rounded-xl transition">
+              <i class="fa-solid fa-key mr-1 text-amber-400"></i> Şifre Değiştir
+            </button>
+            <button onclick="adminLogout()" class="bg-red-600 hover:bg-red-700 text-xs font-bold text-white px-4 py-2.5 rounded-xl transition shadow-md flex items-center gap-1.5">
+              <i class="fa-solid fa-right-from-bracket"></i> Güvenli Çıkış Yap
+            </button>
+          </div>
+        </div>
+
+        <!-- Admin Sekmeleri -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          
+          <!-- TAB 1: BANKA HESAPLARI YÖNETİMİ (İSTEDİĞİ KADAR EKLE / SİL) -->
+          <div class="lg:col-span-1 bg-slate-800 p-6 rounded-2xl border border-slate-700 flex flex-col justify-between">
+            <div>
+              <h3 class="text-lg font-bold text-white mb-2 flex items-center justify-between">
+                <span><i class="fa-solid fa-university text-armut mr-2"></i>Banka Hesap Yönetimi</span>
+                <span class="text-xs bg-armut text-white px-2 py-0.5 rounded-full font-mono">${bankAccounts.length}</span>
+              </h3>
+              <p class="text-xs text-slate-400 mb-6">Sitede yayınlanacak resmi banka hesaplarını ekleyip silebilirsiniz.</p>
+              
+              <!-- Banka Ekleme Formu -->
+              <form id="form-add-bank" class="space-y-3 mb-6 bg-slate-900/50 p-4 rounded-xl border border-slate-700/60">
+                <h4 class="text-xs font-bold text-armut uppercase">Yeni Banka Hesabı Ekle</h4>
+                <input type="text" id="new-bank-name" required placeholder="Banka Adı (Örn: Ziraat Bankası)" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-armut">
+                <input type="text" id="new-bank-iban" required placeholder="IBAN (TR00...)" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-armut font-mono">
+                <input type="text" id="new-bank-holder" required placeholder="Alıcı Adı Soyadı / Unvan" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-armut">
+                <button type="submit" class="w-full bg-armut hover:bg-armut-dark text-white font-bold py-2.5 rounded-lg text-xs transition shadow">
+                  + Banka Hesabını Kaydet
+                </button>
+              </form>
+
+              <!-- Banka Hesap Listesi -->
+              <div class="space-y-3 max-h-80 overflow-y-auto pr-1">
+                ${bankAccounts.length === 0 ? `<p class="text-xs text-slate-500 text-center py-4">Hiç banka hesabı eklenmemiş.</p>` : bankAccounts.map(b => `
+                  <div class="bg-slate-900 p-3.5 rounded-xl border border-slate-700 flex justify-between items-center text-xs">
+                    <div>
+                      <strong class="text-white font-bold block">${b.bankName}</strong>
+                      <span class="text-slate-400 font-mono text-[11px] block">${b.iban}</span>
+                      <span class="text-slate-500 text-[10px] block">Alıcı: ${b.holder}</span>
+                    </div>
+                    <button onclick="deleteBankAccount(${b.id})" class="text-red-400 hover:text-red-300 p-2 text-sm" title="Hesabı Sil">
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: BAKİYE BİLDİRİMLERİ & HAVALE ONAYLARI -->
+          <div class="lg:col-span-2 bg-slate-800 p-6 rounded-2xl border border-slate-700">
+            <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+              <i class="fa-solid fa-bell text-amber-400"></i> Havale & Bakiye Bildirim Mesajları
+            </h3>
+            <p class="text-xs text-slate-400 mb-6">Kullanıcıların yüklediği dekontları inceleyip ödemeyi onaylayabilir veya reddedebilirsiniz.</p>
+
+            <div class="space-y-4 max-h-[500px] overflow-y-auto pr-2">
+              ${balanceRequests.length === 0 ? `
+                <div class="text-center py-10 bg-slate-900/50 rounded-xl text-slate-500 text-xs">Bekleyen bildirim bulunmuyor.</div>
+              ` : balanceRequests.map(r => `
+                <div class="bg-slate-900 p-4 rounded-xl border ${r.status === 'approved' ? 'border-emerald-500/40' : r.status === 'rejected' ? 'border-red-500/40' : 'border-amber-500/40'} flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                  <div class="space-y-1">
+                    <div class="flex items-center gap-2">
+                      <span class="font-bold text-white text-sm">${r.user}</span>
+                      <span class="text-xs text-slate-400">(${r.time} - ${r.createdAt})</span>
+                    </div>
+                    <div class="text-xs text-emerald-400 font-bold">
+                      <i class="fa-solid fa-receipt mr-1"></i> Mesaj: "${r.user} şu saatte (${r.time}) ${r.amount} TL havale yaptı, onay verin"
+                    </div>
+                    <div class="text-[11px] text-slate-400 font-mono">Dekont No / Ek: ${r.receipt}</div>
+                    <div>
+                      Durum: 
+                      ${r.status === 'approved' ? `<span class="text-emerald-400 font-bold text-xs">✓ Onaylandı</span>` : r.status === 'rejected' ? `<span class="text-red-400 font-bold text-xs">✕ Reddedildi</span>` : `<span class="text-amber-400 font-bold text-xs">⏳ Bekliyor</span>`}
+                    </div>
+                  </div>
+                  
+                  ${r.status === 'pending' ? `
+                    <div class="flex items-center gap-2 shrink-0">
+                      <button onclick="approveBalance(${r.id})" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-3.5 py-2 rounded-lg transition shadow">
+                        Ödemeyi Onayla
+                      </button>
+                      <button onclick="rejectBalance(${r.id})" class="bg-red-600 hover:bg-red-500 text-white font-bold text-xs px-3.5 py-2 rounded-lg transition shadow">
+                        Ödemeyi Reddet
+                      </button>
+                    </div>
+                  ` : ''}
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: İL VE İLÇELERDE İLAN VERME VE YÖNETİM (ADMİN REKLAM/İŞ İLANI) -->
+        <div class="mt-8 bg-slate-800 p-6 rounded-2xl border border-slate-700">
+          <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+            <i class="fa-solid fa-rectangle-ad text-armut"></i> İl & İlçe İş İlanı / Reklam Verme Paneli
+          </h3>
+          <p class="text-xs text-slate-400 mb-6">Admin olarak istediğiniz il ve ilçelerde farklı isimlerde iş ilanları tanımlayabilirsiniz.</p>
+
+          <form id="form-admin-add-job" class="grid grid-cols-1 md:grid-cols-4 gap-4 bg-slate-900 p-4 rounded-xl border border-slate-700 mb-6">
+            <input type="text" id="admin-job-title" required placeholder="İlan Başlığı" class="bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none">
+            <input type="text" id="admin-job-city" required placeholder="İl (Örn: Muğla)" class="bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none">
+            <input type="text" id="admin-job-district" required placeholder="İlçe (Örn: Bodrum)" class="bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none">
+            <input type="number" id="admin-job-budget" required placeholder="Bütçe (TL)" class="bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none">
+            <select id="admin-job-cat" class="bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none md:col-span-2">
+              <option value="temizlik">Temizlik</option>
+              <option value="tadilat">Tadilat</option>
+              <option value="nakliyat">Nakliyat</option>
+              <option value="tamir">Tamir</option>
+              <option value="ozelders">Özel Ders</option>
+            </select>
+            <input type="text" id="admin-job-desc" required placeholder="Kısa Detay ve Açıklama" class="bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none md:col-span-2">
+            <button type="submit" class="md:col-span-4 bg-armut hover:bg-armut-dark text-white font-bold py-2.5 rounded-lg text-xs transition">
+              + İlanı İstediğin İl/İlçede Yayınla
+            </button>
+          </form>
+
+          <!-- Sistemdeki İlanlar -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            ${jobs.map(j => `
+              <div class="bg-slate-900 p-4 rounded-xl border border-slate-700 flex justify-between items-start text-xs">
+                <div>
+                  <strong class="text-white block font-bold mb-1">${j.title}</strong>
+                  <span class="text-slate-400 block">${j.city} / ${j.district} (${j.budget} TL)</span>
+                  <span class="text-armut font-mono text-[10px] uppercase block mt-1">${j.category}</span>
+                </div>
+                <button onclick="deleteJob(${j.id})" class="text-red-400 hover:text-red-300 p-1"><i class="fa-solid fa-trash"></i></button>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Banka Hesabı Ekleme Event Listener
+  document.getElementById("form-add-bank").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("new-bank-name").value;
+    const iban = document.getElementById("new-bank-iban").value;
+    const holder = document.getElementById("new-bank-holder").value;
+
+    const currentBanks = getBankAccounts();
+    currentBanks.push({
+      id: Date.now(),
+      bankName: name,
+      iban: iban,
+      holder: holder
+    });
+    saveBankAccounts(currentBanks);
+    alert("Banka hesabı başarıyla eklendi!");
+    renderAdminPanel(container);
+  });
+
+  // Admin İlan Ekleme Event Listener
+  document.getElementById("form-admin-add-job").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const jobsList = getJobs();
+    jobsList.unshift({
+      id: Date.now(),
+      title: document.getElementById("admin-job-title").value,
+      city: document.getElementById("admin-job-city").value,
+      district: document.getElementById("admin-job-district").value,
+      budget: parseFloat(document.getElementById("admin-job-budget").value),
+      category: document.getElementById("admin-job-cat").value,
+      desc: document.getElementById("admin-job-desc").value,
+      date: "Bugün",
+      status: "open"
+    });
+    saveJobs(jobsList);
+    alert("Yeni ilan istenilen il ve ilçede başarıyla yayınlandı!");
+    renderAdminPanel(container);
+  });
+}
+
+/* =======================================================
+   ADMİN AKSİYONLARI VE YARDIMCI FONKSİYONLAR
+   ======================================================= */
+
+// Banka Hesabı Silme
+function deleteBankAccount(id) {
+  if (confirm("Bu banka hesabını silmek istediğinizden emin misiniz?")) {
+    let banks = getBankAccounts();
+    banks = banks.filter(b => b.id !== id);
+    saveBankAccounts(banks);
+    renderAdminPanel(document.getElementById("app-content"));
+  }
+}
+
+// Bakiye Onaylama
+function approveBalance(reqId) {
+  let reqs = getBalanceRequests();
+  const req = reqs.find(r => r.id === reqId);
+  if (req) {
+    req.status = "approved";
+    saveBalanceRequests(reqs);
+    // Müşterinin bakiyesini yükselt
+    let currentUser = getCurrentUser();
+    if (currentUser.name === req.user) {
+      currentUser.balance += req.amount;
+      saveCurrentUser(currentUser);
+    }
+    alert(`${req.user} adlı müşterinin ${req.amount} TL bakiyesi onaylandı!`);
+    renderAdminPanel(document.getElementById("app-content"));
+  }
+}
+
+// Bakiye Reddetme
+function rejectBalance(reqId) {
+  let reqs = getBalanceRequests();
+  const req = reqs.find(r => r.id === reqId);
+  if (req) {
+    req.status = "rejected";
+    saveBalanceRequests(reqs);
+    alert(`${req.user} adlı kullanıcının ödemesi reddedildi.`);
+    renderAdminPanel(document.getElementById("app-content"));
+  }
+}
+
+// İlan Silme
+function deleteJob(id) {
+  if (confirm("Bu ilanı silmek istediğinize emin misiniz?")) {
+    let jobs = getJobs();
+    jobs = jobs.filter(j => j.id !== id);
+    saveJobs(jobs);
+    renderAdminPanel(document.getElementById("app-content"));
+  }
+}
+
+// Admin Şifresi Değiştirme Modalı
+function openChangeAdminPassModal() {
+  const newPass = prompt("Yeni Admin Şifrenizi Giriniz:");
+  if (newPass && newPass.trim() !== "") {
+    localStorage.setItem("iv_admin_pass", newPass.trim());
+    alert("Admin şifresi başarıyla değiştirildi! Bir sonraki girişte yeni şifreniz geçerli olacaktır.");
+  }
+}
+
+// Admin Çıkış
+function adminLogout() {
+  sessionStorage.removeItem("iv_admin_logged");
+  alert("Güvenli şekilde çıkış yapıldı.");
+  window.location.hash = "#anasayfa";
+}
+
+// Modal & Teklif Ver İletişimi
+function openQuoteModal(jobId, jobTitle, calculatedFee) {
+  document.getElementById("quote-job-id").value = jobId;
+  document.getElementById("modal-job-title").textContent = jobTitle;
+  document.getElementById("quote-calculated-fee").textContent = calculatedFee + " TL";
+  document.getElementById("modal-offer").classList.remove("hidden");
+}
+
+function closeModal(modalId) {
+  document.getElementById(modalId).classList.add("hidden");
+}
+
+// Form Teklif Gönderme İşlemi
+document.getElementById("form-submit-quote").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const jobId = document.getElementById("quote-job-id").value;
+  const jobs = getJobs();
+  const job = jobs.find(j => j.id == jobId);
+  
+  if (job) {
+    const fee = calculateQuoteFee(job.budget);
+    let user = getCurrentUser();
+    
+    if (user.balance < fee) {
+      alert(`Bakiyeniz yetersiz! Bu teklifi vermek için en az ${fee} TL bakiyeniz olmalıdır. Lütfen Bakiye Yükle sayfasından bakiye ekleyiniz.`);
+      closeModal("modal-offer");
+      window.location.hash = "#bakiye";
+      return;
+    }
+    
+    // Bakiyeden Düş
+    user.balance -= fee;
+    saveCurrentUser(user);
+    closeModal("modal-offer");
+    alert(`Teklifiniz başarıyla gönderildi! Hesabınızdan ${fee} TL teklif ücreti düşüldü. Kalan Bakiyeniz: ${user.balance} TL`);
+  }
+});
+
+// Arama Motoru İcrası
+function executeSearch() {
+  const q = document.getElementById("home-search-input").value.toLowerCase();
+  if (!q) return;
+  alert(`"${q}" aramasına uygun ustalar listeleniyor...`);
+}
+
+// Şehre Göre Filtreleme
+function filterByCity(city) {
+  alert(`${city} bölgesindeki en yakın ustalar filtrelendi.`);
+}</script>
+</body>
+</html>
